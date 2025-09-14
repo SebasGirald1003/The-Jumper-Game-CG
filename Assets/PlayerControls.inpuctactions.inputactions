@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "PlayerControls.inpuctactions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "0745e0a2-c78f-495d-b9f1-738ac0326fde",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "451551f6-7ca0-4275-ad22-a779541b2540",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5fcf276b-16c0-49da-a212-c94bb82090fa",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
