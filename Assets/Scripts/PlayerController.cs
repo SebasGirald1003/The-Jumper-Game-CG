@@ -1,20 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem; // Importante
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerControls controls;
+    public GameObject textObject;
     private bool isGrounded = false;
 
+    [Header("Movimiento")]
+    public float speed = 5f;  
     public float jumpForce = 5f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         controls = new PlayerControls();
+        textObject.SetActive(false);
 
-        // Vinculamos el input Jump
         controls.Player.Jump.performed += ctx => Jump();
     }
 
@@ -26,6 +30,11 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         controls.Disable();
+    }
+
+    private void FixedUpdate()
+    {
+        rb.linearVelocity = new Vector3(speed, rb.linearVelocity.y, 0);
     }
 
     private void Jump()
@@ -42,7 +51,13 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
-            Debug.Log("Grounded");
+        }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject); 
+            textObject.SetActive(true);
+            textObject.GetComponent<TextMeshProUGUI>().text = "GAME OVER!";
         }
     }
 }
